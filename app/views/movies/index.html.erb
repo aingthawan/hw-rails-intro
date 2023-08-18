@@ -6,8 +6,8 @@
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
-      <th>Movie Title</th>
-      <th>Rating</th>
+      <th><%= link_to "Movie Title", movies_path(:sort => "title", :direction => sort_direction("title")) %></th>
+      <th><%= link_to "Rating", movies_path(:sort => "rating", :direction => sort_direction("rating")) %></th>
       <th>Release Date</th>
       <th>More Info</th>
     </tr>

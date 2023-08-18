@@ -8,6 +8,18 @@ class MoviesController < ApplicationController
   
     def index
       @movies = Movie.all
+
+      # handle sorting feature
+      if params[:sort] == "title"
+        direction = params[:direction] == "desc" ? "desc" : "asc"
+        @movies = @movies.order(title: direction)
+      end
+      # rating sort
+      if params[:sort] == "rating"
+        direction = params[:direction] == "desc" ? "desc" : "asc"
+        @movies = @movies.order(title: direction)
+      end
+
     end
   
     def new
