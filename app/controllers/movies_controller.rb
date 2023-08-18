@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
     def index
       @movies = Movie.all
 
-      # handle sorting feature
+      # handle sorting feature =======================================
       if params[:sort] == "title"
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(title: direction)
@@ -19,9 +19,17 @@ class MoviesController < ApplicationController
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(title: direction)
 
+      # rating release date
       elsif params[:sort] == "release_date"
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(release_date: direction)
+      end
+
+      # handle filer feature =======================================
+      if params[:filter_year].present?
+        # get year in int format
+        year = params[:filter_year].to_i 
+        @movies = @movies.where("strftime('%Y', release_date) = ?", year.to_s)
       end
 
     end
