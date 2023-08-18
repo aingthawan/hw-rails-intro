@@ -13,6 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 
+gem 'execjs'
+gem 'therubyracer', :platform => :ruby
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
