@@ -13,11 +13,15 @@ class MoviesController < ApplicationController
       if params[:sort] == "title"
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(title: direction)
-      end
+      
       # rating sort
-      if params[:sort] == "rating"
+      elsif params[:sort] == "rating"
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(title: direction)
+
+      elsif params[:sort] == "release_date"
+        direction = params[:direction] == "desc" ? "desc" : "asc"
+        @movies = @movies.order(release_date: direction)
       end
 
     end

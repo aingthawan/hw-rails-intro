@@ -8,7 +8,7 @@
     <tr>
       <th><%= link_to "Movie Title", movies_path(:sort => "title", :direction => sort_direction("title")) %></th>
       <th><%= link_to "Rating", movies_path(:sort => "rating", :direction => sort_direction("rating")) %></th>
-      <th>Release Date</th>
+      <th><%= link_to "Release Date", movies_path(sort: "release_date", direction: sort_direction("release_date")) %></th>
       <th>More Info</th>
     </tr>
   </thead>
