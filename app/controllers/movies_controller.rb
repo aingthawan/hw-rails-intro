@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
       if params[:sort] == "title"
         direction = params[:direction] == "desc" ? "desc" : "asc"
         @movies = @movies.order(title: direction)
+        # @movies = @movies.order(title: :asc) # sort only ascendingly 
       
       # rating sort
       elsif params[:sort] == "rating"
@@ -26,11 +27,19 @@ class MoviesController < ApplicationController
       end
 
       # handle filer feature =======================================
+      # filter release year
       if params[:filter_year].present?
         # get year in int format
         year = params[:filter_year].to_i 
         @movies = @movies.where("strftime('%Y', release_date) = ?", year.to_s)
+
+      # filter by rating
+      elsif params[:filter_rating].present?
+        @movies = @movies.where(rating: params[:filter_rating])
+
       end
+
+
 
     end
   
